@@ -1,4 +1,4 @@
-// AIO_USERNAME, AIO_KEY, FEED_1 y FEED_2 vienen de config.js
+// AIO_USERNAME, FEED_1, FEED_2 y FEED_3 vienen de config.js
 const POLL_INTERVAL_MS = 5000; // cada 5 segundos
 const MAX_POINTS = 30;         // puntos visibles en cada gráfico
 
@@ -96,9 +96,7 @@ function updateGauge(value) {
 // --- Lógica de red ---
 async function fetchFeed(feedKey) {
   const url = `https://io.adafruit.com/api/v2/${AIO_USERNAME}/feeds/${feedKey}/data?limit=1`;
-  const res = await fetch(url, {
-    headers: { "X-AIO-Key": AIO_KEY },
-  });
+  const res = await fetch(url);
   if (!res.ok) throw new Error(`Error ${res.status} en feed ${feedKey}`);
   const data = await res.json();
   return data[0] || null;
