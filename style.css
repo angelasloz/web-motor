@@ -1,0 +1,374 @@
+:root {
+  --ufv-navy: #002855;
+  --ufv-navy-soft: #1a3a6b;
+  --bg: #f4f6f9;
+  --card-bg: #ffffff;
+  --text: #2c3e50;
+  --muted: #7a8794;
+  --border: #e2e6ec;
+  --shadow: 0 4px 14px rgba(0, 40, 85, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  background: var(--ufv-navy);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.5rem;
+  border-bottom: 3px solid #1a73e8;
+}
+
+.nav-brand {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-size: 1rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: #ffffffcc;
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.nav-links a.active {
+  background: #fff;
+  color: var(--ufv-navy);
+  font-weight: 600;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+  background: linear-gradient(135deg, var(--ufv-navy), var(--ufv-navy-soft));
+  color: #fff;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-top: 4px solid var(--ufv-navy);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.card-label {
+  font-size: 0.95rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.card-value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--ufv-navy);
+  margin: 0.4rem 0;
+}
+
+.card-unit {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.chart-box {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+}
+
+.chart-box h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ufv-navy);
+  margin-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.chart-box canvas {
+  width: 100% !important;
+  height: 280px !important;
+}
+
+/* ---------- GAUGE ---------- */
+.gauge-section {
+  display: flex;
+  justify-content: center;
+}
+
+.gauge-box {
+  width: 100%;
+  max-width: 500px;
+}
+
+.gauge-wrapper {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.gauge-wrapper canvas {
+  width: 100% !important;
+  height: 220px !important;
+}
+
+.gauge-value {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--ufv-navy);
+}
+
+.gauge-range {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 12%;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.status {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding: 0.5rem;
+}
+
+/* ---------- HISTORIAL ---------- */
+.hidden { display: none !important; }
+
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.2rem;
+}
+
+.day-block {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--ufv-navy);
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+
+.day-block:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 40, 85, 0.15);
+}
+
+.day-date {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ufv-navy);
+}
+
+.day-time {
+  font-size: 0.95rem;
+  color: var(--ufv-navy-soft);
+  font-weight: 600;
+  margin-top: 0.3rem;
+}
+
+.day-info {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+
+.day-hint {
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  color: #1a73e8;
+  font-weight: 600;
+}
+
+.back-btn {
+  background: var(--ufv-navy);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background 0.2s;
+}
+
+.back-btn:hover {
+  background: var(--ufv-navy-soft);
+}
+
+.detail-date {
+  color: var(--ufv-navy);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.loading, .error {
+  text-align: center;
+  color: var(--muted);
+  padding: 2rem;
+  grid-column: 1 / -1;
+}
+
+.error { color: #c62828; }
+
+/* ---------- INFO ---------- */
+.big-title {
+  font-size: 2.4rem !important;
+}
+
+.info-container {
+  max-width: 900px;
+}
+
+.info-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  line-height: 1.7;
+}
+
+.info-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.info-card h2 {
+  color: var(--ufv-navy);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  border-bottom: 2px solid var(--ufv-navy);
+  display: inline-block;
+  padding-bottom: 0.2rem;
+}
+
+.info-card p {
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .cards,
+  .charts {
+    grid-template-columns: 1fr;
+  }
+  .header h1 {
+    font-size: 1.3rem;
+  }
+  .card-value {
+    font-size: 2.4rem;
+  }
+  .navbar {
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 0.8rem;
+  }
+  .nav-links {
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .big-title {
+    font-size: 1.8rem !important;
+  }
+  .info-card {
+    padding: 1.2rem;
+  }
+}

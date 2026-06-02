@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Información - Motor Termoacústico UFV</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">TFG · Motor Termoacústico</div>
+    <ul class="nav-links">
+      <li><a href="index.html">En directo</a></li>
+      <li><a href="historial.html">Historial</a></li>
+      <li><a href="info.html" class="active">Info</a></li>
+    </ul>
+  </nav>
+
+  <header class="header">
+    <h1 class="big-title">Sobre el Proyecto</h1>
+    <p class="subtitle">Motor Termoacústico · Ángela Sánchez Lozano - UFV</p>
+  </header>
+
+  <main class="container info-container">
+    <article class="info-card">
+      <img
+        src="motor.jpeg"
+        alt="Motor Termoacústico"
+        class="info-image"
+      />
+
+      <h2>¿Qué es este proyecto?</h2>
+      <p>
+        Este PFG consiste en el desarrollo de un sistema de monitorización
+        en tiempo real para un <strong>motor termoacústico</strong> mediante
+        sensores conectados a la nube a través de la plataforma Adafruit IO.
+      </p>
+
+      <h2>Objetivo</h2>
+      <p>
+        Además de construir el motor y conseguir que funcione correctamente,
+        el objetivo principal es <strong>supervisar la potencia que genera el
+        motor</strong> en base a los datos recogidos por los sensores de
+        presión. De este modo se puede estudiar el comportamiento del motor
+        analizando la evolución de las presiones internas en dos puntos del
+        sistema, permitiendo caracterizar su funcionamiento y optimizar su
+        rendimiento.
+      </p>
+
+      <h2>Tecnología</h2>
+      <p>
+        Los datos se recogen mediante dos sensores de presión, se transmiten a
+        Adafruit IO y se visualizan en este dashboard web desarrollado con
+        HTML, CSS y JavaScript puro junto con Chart.js para las gráficas.
+      </p>
+
+    </article>
+  </main>
+</body>
+</html>

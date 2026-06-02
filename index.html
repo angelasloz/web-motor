@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Motor Termoacústico - UFV</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">TFG · Motor Termoacústico</div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">En directo</a></li>
+      <li><a href="historial.html">Historial</a></li>
+      <li><a href="info.html">Info</a></li>
+    </ul>
+  </nav>
+
+  <header class="header">
+    <h1>Dashboard en Directo</h1>
+    <p class="subtitle">Monitorización en tiempo real</p>
+  </header>
+
+  <main class="container">
+    <section class="cards">
+      <div class="card">
+        <span class="card-label">Presión 1</span>
+        <span class="card-value" id="value1">--</span>
+        <span class="card-unit">unidades</span>
+      </div>
+      <div class="card">
+        <span class="card-label">Presión 2</span>
+        <span class="card-value" id="value2">--</span>
+        <span class="card-unit">unidades</span>
+      </div>
+    </section>
+
+    <section class="charts">
+      <div class="chart-box">
+        <h2>Histórico Presión 1</h2>
+        <canvas id="chart1"></canvas>
+      </div>
+      <div class="chart-box">
+        <h2>Histórico Presión 2</h2>
+        <canvas id="chart2"></canvas>
+      </div>
+    </section>
+
+    <section class="gauge-section">
+      <div class="chart-box gauge-box">
+        <h2>Potencia</h2>
+        <div class="gauge-wrapper">
+          <canvas id="gaugeChart"></canvas>
+          <div class="gauge-value" id="gaugeValue">--</div>
+          <div class="gauge-range">
+            <span id="gaugeMin">0</span>
+            <span id="gaugeMax">100</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="status">
+      <span id="status">Conectando con Adafruit IO...</span>
+    </footer>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Historial - Motor Termoacústico UFV</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">TFG · Motor Termoacústico</div>
+    <ul class="nav-links">
+      <li><a href="index.html">En directo</a></li>
+      <li><a href="historial.html" class="active">Historial</a></li>
+      <li><a href="info.html">Info</a></li>
+    </ul>
+  </nav>
+
+  <header class="header">
+    <h1>Historial de Mediciones</h1>
+  </header>
+
+  <main class="container">
+    <!-- Vista de bloques (días) -->
+    <section id="grid-view">
+      <div id="days-grid" class="days-grid">
+        <p class="loading">Cargando historial...</p>
+      </div>
+    </section>
+
+    <!-- Vista de detalle (gráficas de un día) -->
+    <section id="detail-view" class="hidden">
+      <button id="back-btn" class="back-btn">&larr; Volver al historial</button>
+      <h2 id="detail-date" class="detail-date"></h2>
+      <div class="charts">
+        <div class="chart-box">
+          <h2>Presión 1</h2>
+          <canvas id="histChart1"></canvas>
+        </div>
+        <div class="chart-box">
+          <h2>Presión 2</h2>
+          <canvas id="histChart2"></canvas>
+        </div>
+        <div class="chart-box">
+          <h2>Potencia</h2>
+          <canvas id="histChart3"></canvas>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="historial.js"></script>
+</body>
+</html>
