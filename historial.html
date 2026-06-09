@@ -35,19 +35,61 @@
       <h2 id="detail-date" class="detail-date"></h2>
       <div class="charts">
         <div class="chart-box">
-          <h2>Presión 1</h2>
+          <div class="chart-header">
+            <h2>Presión 1</h2>
+            <button class="expand-btn" data-target="histChart1" title="Ampliar">⛶</button>
+          </div>
           <canvas id="histChart1"></canvas>
         </div>
         <div class="chart-box">
-          <h2>Presión 2</h2>
+          <div class="chart-header">
+            <h2>Presión 2</h2>
+            <button class="expand-btn" data-target="histChart2" title="Ampliar">⛶</button>
+          </div>
           <canvas id="histChart2"></canvas>
         </div>
         <div class="chart-box">
-          <h2>Potencia</h2>
+          <div class="chart-header">
+            <h2>Potencia</h2>
+            <button class="expand-btn" data-target="histChart3" title="Ampliar">⛶</button>
+          </div>
           <canvas id="histChart3"></canvas>
+        </div>
+        <div class="chart-box chart-box-wide">
+          <div class="chart-header">
+            <h2>Comparativa Presión 1 vs Presión 2</h2>
+            <button class="expand-btn" data-target="histChartCombo" title="Ampliar">⛶</button>
+          </div>
+          <div class="combo-filters">
+            <div class="filter-presets" id="duration-presets">
+              <button data-duration="60000">1 min</button>
+              <button data-duration="300000" class="active">5 min</button>
+              <button data-duration="900000">15 min</button>
+              <button data-duration="1800000">30 min</button>
+              <button data-duration="3600000">1 h</button>
+              <button data-duration="0">Todo</button>
+            </div>
+            <div class="filter-slider">
+              <label for="window-slider">Inicio de la ventana:</label>
+              <input type="range" id="window-slider" min="0" max="100" value="0" step="1" />
+              <span id="window-label">—</span>
+            </div>
+          </div>
+          <canvas id="histChartCombo"></canvas>
         </div>
       </div>
     </section>
+
+    <!-- Modal para ampliar gráficas -->
+    <div id="chart-modal" class="modal hidden">
+      <div class="modal-content">
+        <button id="modal-close" class="modal-close" title="Cerrar">&times;</button>
+        <h2 id="modal-title"></h2>
+        <div class="modal-canvas-wrap">
+          <canvas id="modalChart"></canvas>
+        </div>
+      </div>
+    </div>
   </main>
 
   <script src="config.js"></script>

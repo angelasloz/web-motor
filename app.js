@@ -59,6 +59,37 @@ const chart2 = new Chart(document.getElementById("chart2"), {
   options: baseOptions(),
 });
 
+// --- Gráfico combinado: ambas presiones en uno ---
+const comboOptions = baseOptions();
+comboOptions.plugins.legend = { display: true, position: "top" };
+const chartCombo = new Chart(document.getElementById("chartCombo"), {
+  type: "line",
+  data: {
+    labels: [],
+    datasets: [
+      datasetConfig("Presión 1", "#002855"),
+      datasetConfig("Presión 2", "#1a73e8"),
+    ],
+  },
+  options: comboOptions,
+});
+
+function pushCombo(label, v1, v2) {
+  chartCombo.data.labels.push(label);
+  chartCombo.data.datasets[0].data.push(v1);
+  chartCombo.data.datasets[1].data.push(v2);
+  if (chartCombo.data.labels.length > MAX_POINTS) {
+    chartCombo.data.labels.shift();
+    chartCombo.data.datasets[0].data.shift();
+    chartCombo.data.datasets[1].data.shift();
+  }
+  chartCombo.update();
+}
+
+// Últimos valores conocidos para alimentar el gráfico combinado
+let lastV1 = null;
+let lastV2 = null;
+
 // --- Gauge de potencia (half doughnut) ---
 const gaugeChart = new Chart(document.getElementById("gaugeChart"), {
   type: "doughnut",
@@ -129,11 +160,15 @@ async function update() {
       fetchFeed(FEED_3),
     ]);
 
+    let updatedCombo = false;
+
     if (d1 && d1.id !== lastId[FEED_1]) {
       lastId[FEED_1] = d1.id;
       const v = parseFloat(d1.value);
       value1El.textContent = isNaN(v) ? d1.value : v.toFixed(2);
       pushPoint(chart1, formatTime(d1.created_at), v);
+      lastV1 = v;
+      updatedCombo = true;
     }
 
     if (d2 && d2.id !== lastId[FEED_2]) {
@@ -141,6 +176,12 @@ async function update() {
       const v = parseFloat(d2.value);
       value2El.textContent = isNaN(v) ? d2.value : v.toFixed(2);
       pushPoint(chart2, formatTime(d2.created_at), v);
+      lastV2 = v;
+      updatedCombo = true;
+    }
+
+    if (updatedCombo && lastV1 !== null && lastV2 !== null) {
+      pushCombo(formatTime(), lastV1, lastV2);
     }
 
     if (d3 && d3.id !== lastId[FEED_3]) {
